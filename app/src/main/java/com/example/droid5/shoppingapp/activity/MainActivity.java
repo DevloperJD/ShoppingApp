@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity
 
     private void setupViewPager(ViewPager viewPager) {
 
+
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
 
