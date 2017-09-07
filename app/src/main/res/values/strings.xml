@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ShoppingApp</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="str_news_feed">Search</string>
+    <string name="whats_new">WHAT NEW</string>
+    <string name="action_search">Search</string>
+</resources>
