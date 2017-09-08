@@ -1,4 +1,4 @@
-package com.example.droid5.shoppingapp.activity;
+package com.example.droid5.shoppingapp.activity.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
