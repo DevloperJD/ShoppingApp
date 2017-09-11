@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,44 +75,44 @@ public class WhatNewFragment extends android.support.v4.app.Fragment {
         carouselItemList = new ArrayList<>();
 
         productRecyclerView = view.findViewById(R.id.products_recycler_view);
+        productRecyclerView.setNestedScrollingEnabled(false);
         carouselRecyclerView = view.findViewById(R.id.carousel_recycler);
-
         gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         fragmentRecyclerviewAdapter = new FragmentRecyclerviewAdapter(productList, getActivity());
         productRecyclerView.setLayoutManager(gridLayoutManager);
         productRecyclerView.setAdapter(fragmentRecyclerviewAdapter);
         linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         carouselRecyclerviewAdapter = new CarouselRecyclerviewAdapter(carouselItemList, getActivity());
         carouselRecyclerView.setLayoutManager(linearLayoutManager);
         carouselRecyclerView.setAdapter(carouselRecyclerviewAdapter);
-
-
+        SnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(carouselRecyclerView);
         prepareProductList();
-
         return view;
     }
 
     private void prepareProductList() {
         Log.e(TAG, "prepareProductList");
-        Product product = new Product("https://images-na.ssl-images-amazon.com/images/I/41y7uqTlRaL.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "Rs 285");
+        Product product = new Product("https://images-na.ssl-images-amazon.com/images/I/41y7uqTlRaL.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "285");
         productList.add(product);
-        product = new Product("https://images-na.ssl-images-amazon.com/images/I/71fwooxnbLL._SL1500_.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "Rs 285");
+        product = new Product("https://images-na.ssl-images-amazon.com/images/I/71fwooxnbLL._SL1500_.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "285");
         productList.add(product);
-        product = new Product("https://images-na.ssl-images-amazon.com/images/I/41y7uqTlRaL.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "Rs 285");
+        product = new Product("https://images-na.ssl-images-amazon.com/images/I/41y7uqTlRaL.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "285");
         productList.add(product);
-        product = new Product("https://images-na.ssl-images-amazon.com/images/I/71fwooxnbLL._SL1500_.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "Rs 285");
+        product = new Product("https://images-na.ssl-images-amazon.com/images/I/71fwooxnbLL._SL1500_.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "285");
         productList.add(product);
-        product = new Product("https://images-na.ssl-images-amazon.com/images/I/41y7uqTlRaL.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "Rs 285");
+        product = new Product("https://images-na.ssl-images-amazon.com/images/I/41y7uqTlRaL.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "285");
         productList.add(product);
-        product = new Product("https://images-na.ssl-images-amazon.com/images/I/41y7uqTlRaL.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "Rs 285");
+        product = new Product("https://images-na.ssl-images-amazon.com/images/I/41y7uqTlRaL.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "285");
         productList.add(product);
-        product = new Product("https://images-na.ssl-images-amazon.com/images/I/71fwooxnbLL._SL1500_.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "Rs 285");
+        product = new Product("https://images-na.ssl-images-amazon.com/images/I/71fwooxnbLL._SL1500_.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "285");
         productList.add(product);
-        product = new Product("https://images-na.ssl-images-amazon.com/images/I/41y7uqTlRaL.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "Rs 285");
+        product = new Product("https://images-na.ssl-images-amazon.com/images/I/41y7uqTlRaL.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "285");
         productList.add(product);
-        product = new Product("https://images-na.ssl-images-amazon.com/images/I/71fwooxnbLL._SL1500_.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "Rs 285");
+        product = new Product("https://images-na.ssl-images-amazon.com/images/I/71fwooxnbLL._SL1500_.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "285");
         productList.add(product);
-        product = new Product("https://images-na.ssl-images-amazon.com/images/I/41y7uqTlRaL.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "Rs 285");
+        product = new Product("https://images-na.ssl-images-amazon.com/images/I/41y7uqTlRaL.jpg", "Hot Muggs DND Genius at Work Ceramic Mug, 350ml", "Hot Muggs", "285");
         productList.add(product);
         CarouselItem carouselItem = new CarouselItem("https://images-eu.ssl-images-amazon.com/images/G/31/img17/Fashion/AW/new-season-AF-page-04.jpg");
         carouselItemList.add(carouselItem);

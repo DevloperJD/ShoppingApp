@@ -2,21 +2,29 @@ package com.example.droid5.shoppingapp.activity;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.droid5.shoppingapp.R;
 import com.example.droid5.shoppingapp.activity.fragment.HihgtsFragment;
@@ -32,6 +40,9 @@ public class MainActivity extends AppCompatActivity
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager tabViewPager;
+    private AppBarLayout appBarLayout;
+    private Bitmap bitmap;
+    private Paint p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +58,19 @@ public class MainActivity extends AppCompatActivity
         tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(tabViewPager);
 
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            Drawable background = getResources().getDrawable(R.drawable.status_cross_shade);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(getResources().getColor(R.color.transparent));
+            window.setNavigationBarColor(getResources().getColor(R.color.transparent));
+            window.setBackgroundDrawable(background);
+
+
+
+        }
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle;
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -60,7 +84,7 @@ public class MainActivity extends AppCompatActivity
 
     private void setupViewPager(ViewPager viewPager) {
         MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(WhatNewFragment.newInstance("MORE HERE"), getString(R.string.whats_new));
+        adapter.addFragment(WhatNewFragment.newInstance("MORE"), getString(R.string.whats_new));
         adapter.addFragment(new PopularFragment(), getString(R.string.populartab));
         adapter.addFragment(new HihgtsFragment(), getString(R.string.highlights));
         viewPager.setAdapter(adapter);
@@ -107,7 +131,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
@@ -148,5 +174,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 }

@@ -54,7 +54,7 @@ public class FragmentRecyclerviewAdapter extends RecyclerView.Adapter<FragmentRe
 
         holder.productName.setText(product.getProductName());
         holder.firmName.setText(product.getFirmName());
-        holder.priceTag.setText( product.getPrice());
+        holder.priceTag.setText( "$"+product.getPrice());
         Glide.with(context).load(product.getThumbUrl()).into(holder.imageView);
 
     }

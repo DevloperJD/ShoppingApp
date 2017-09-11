@@ -1,24 +1,24 @@
 package com.example.droid5.shoppingapp.activity;
 
+import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.example.droid5.shoppingapp.R;
 
-public class SearchResultsActivity extends AppCompatActivity {
+public class SearchResultsActivity extends Activity {
     private TextView textView;
-
+    private static final String TAG = SearchResultsActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
-        ActionBar actionBar = getSupportActionBar();
+        Log.e(TAG, "onCreate: i am called" );
+        android.app.ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         textView = findViewById(R.id.query);
         handleIntent(getIntent());
